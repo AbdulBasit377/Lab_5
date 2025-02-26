@@ -30,25 +30,7 @@ module seven_segment (
         endcase
     end
 
-    always_comb begin
-        segments[0] = (~num[3] & ~num[2] & ~num[1] & num[0]) | (~num[3] & num[2] & ~num[1] & ~num[0]) | (num[3] & num[2] & ~num[1] & num[0]) | (num[3] & ~num[2] & num[1] & num[0]);
-        segments[1] = (num[2] & num[1] & ~num[0]) | (num[3] & num[1] & num[0]) | (num[3] & num[2] & ~num[0]) | (~num[3] & num[2] & ~num[1] & num[0]);
-        segments[2] = (~num[3] & ~num[2] & num[1] & ~num[0]) | (num[3] & num[2] & num[1]) | (num[3] & num[2] & ~num[0]);
-        segments[3] = (~num[3] & num[2] & ~num[1] & ~num[0]) | (~num[3] & ~num[2] & ~num[1] & num[0]) | (num[2] & num[1] & num[0]) | (num[3] & ~num[2] & num[1] & ~num[0]);
-        segments[4] = (~num[3] & num[0]) | (~num[2] & ~num[1] & num[0]) | (~num[3] & num[2] & ~num[1]);
-        segments[5] = (~num[3] & ~num[2] & num[0]) | (~num[3] & ~num[2] & num[1]) | (~num[3] & num[1] & num[0]) | (num[3] & num[2] & ~num[1] & num[0]);
-        segments[6] = (~num[3] & ~num[2] & ~num[1]) | (num[3] & num[2] & ~num[1] & ~num[0]) | (~num[3] & num[2] & num[1] & num[0]);
-        
-        anode[0] = (sel[2] | sel[1] | sel[0]);
-        anode[1] = (sel[2] | sel[1] | ~sel[0]);
-        anode[2] = (sel[2] | ~sel[1] | sel[0]);
-        anode[3] = (sel[2] | ~sel[1] | ~sel[0]);
-        anode[4] = (~sel[2] | sel[1] | sel[0]);
-        anode[5] = (~sel[2] | sel[1] | ~sel[0]);
-        anode[6] = (~sel[2] | ~sel[1] | sel[0]);
-        anode[7] = (~sel[2] | ~sel[1] | ~sel[0]);
-    end
-
+    
     always_comb begin
         case (sel)
             3'b000: anode = 8'b11111110;
@@ -62,3 +44,4 @@ module seven_segment (
         endcase
     end
 endmodule
+
